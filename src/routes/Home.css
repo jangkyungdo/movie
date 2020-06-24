@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 300;
+  width: 100%;
+  height: 100vh;
+}
+
+.movies {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(400px, 1fr));
+  grid-gap: 100px;
+  margin: 100px;
+}
+
+@media screen and (max-width: 768px) {
+  .movies {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+}
