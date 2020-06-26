@@ -15,10 +15,10 @@ function SearchMovie(props) {
             {title.replace(/<b>/gi, "").replace(/<\/b>/gi, "")}
           </h3>
           <p className="movie__rating">
-            <span>평점 : </span> {rating}/10
+            <span>평점 : </span> {rating} / 10
           </p>
           <p className="movie__year">
-            <span>개봉년도 : </span> {year}
+            <span>개봉년도 : </span> {year}년
           </p>
           <p className="movie__director">
             <span>감독 : </span> {director}
