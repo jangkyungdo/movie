@@ -1,0 +1,34 @@
+.search__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.search__contents {
+  width: 100%;
+}
+
+.search__input {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid red;
+  background: none;
+  width: 50%;
+  padding: 5px;
+  font-size: 20px;
+}
+
+.search__input:focus {
+  border: 1px solid red;
+}
+
+.movies {
+  text-align: left;
+}
+
+.movie__director,
+.movie__actor {
+  margin: 0;
+  margin-bottom: 5px;
+}

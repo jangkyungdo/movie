@@ -16,14 +16,17 @@ function Movie(props) {
       >
         <img src={poster} alt={title} title={title} />
         <div className="movie__data">
-          <h3 className="movie__title">{title}</h3>
-          <h4 className="movie__year">{year}</h4>
-          <h5 className="movie__rating">평점 : {rating} / 10.0</h5>
+          <h2 className="movie__title">{title}</h2>
+          <h4 className="movie__year">개봉년도 : {year}년</h4>
+          <h4 className="movie__rating">평점 : {rating} / 10.0</h4>
           <ul className="movie__genres">
+            <li>
+              <h4 className="movie__year">장르 : </h4>
+            </li>
             {genres.map((genre, index) => {
               return (
                 <li key={index} className="movie__genre">
-                  {genre}
+                  <h4 className="movie__year">{genre}</h4>
                 </li>
               );
             })}

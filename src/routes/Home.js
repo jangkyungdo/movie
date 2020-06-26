@@ -9,20 +9,20 @@ class Home extends React.Component {
     movies: [],
   };
 
+  // 영화 데이터 로딩
   getMovies = async () => {
     const {
       data: {
         data: { movies },
       },
     } = await axios.get(
-      "https://yts-proxy.now.sh/list_movies.json?sort_by=rating"
+      "https://yts-proxy.now.sh/list_movies.json?sort_by=like_count"
     );
     this.setState({ movies, isLoading: false });
     // 상태 변화가 생기는 순간 render() 호출
   };
 
   componentDidMount() {
-    // 영화 데이터 로딩
     this.getMovies();
   }
 
@@ -36,9 +36,9 @@ class Home extends React.Component {
           </div>
         ) : (
           <div className="movies">
-            {movies.map((movie) => (
+            {movies.map((movie, index) => (
               <Movie
-                key={movie.id}
+                key={index}
                 id={movie.id}
                 year={movie.year}
                 title={movie.title}
