@@ -15,15 +15,36 @@
 
 .movies {
   display: grid;
-  grid-template-columns: repeat(2, minmax(400px, 1fr));
-  grid-gap: 100px;
-  margin: 100px;
+  grid-template-columns: repeat(3, minmax(200px, 1fr));
+  grid-gap: 50px;
+  margin: 50px;
+}
+
+.more__box {
+  display: flex;
+  justify-content: center;
+}
+
+.more__btn {
+  outline: none;
+  background: none;
+  border: none;
+  border-bottom: 1px solid darkgray;
+  cursor: pointer;
+  color: #2c2c2c;
+  font-size: 24px;
+  margin-bottom: 32px;
+  padding: 8px;
+}
+
+.more__btn:hover {
+  border: 1px solid darkgray;
+  border-radius: 5px;
 }
 
 @media screen and (max-width: 768px) {
   .movies {
     grid-template-columns: 1fr;
-    width: 100%;
     grid-gap: 50px;
     margin: 60px;
   }

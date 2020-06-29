@@ -5,10 +5,12 @@ import "./Home.css";
 import "./Search.css";
 
 class Search extends React.Component {
-  state = { isLoading: true, movies: [], value: "" };
+  state = {
+    isLoading: true,
+    movies: [],
+    value: "",
+  };
   getSearchMovie = async () => {
-    const ID_KEY = "Eac0niRjiLQb_S68iAy_";
-    const SECRET_KEY = "141eefzBQz";
     const search = this.state.value;
 
     if (search === "") {
@@ -16,12 +18,8 @@ class Search extends React.Component {
     } else {
       const {
         data: { items },
-      } = await axios.get("/v1/search/movie.json", {
-        params: { query: search, display: 20 },
-        headers: {
-          "X-Naver-Client-Id": ID_KEY,
-          "X-Naver-Client-Secret": SECRET_KEY,
-        },
+      } = await axios.get("http://localhost:3000/search", {
+        params: { query: search },
       });
       this.setState({ movies: items, isLoading: false });
     }
