@@ -50,7 +50,9 @@ class Home extends React.Component {
   componentDidMount() {
     this.getMovies();
   }
-
+  scrollToBottm(event) {
+    document.getElementById("root").scrollTo(100, 100);
+  }
   render() {
     const { isLoading, movies } = this.state;
     return (
@@ -61,6 +63,7 @@ class Home extends React.Component {
           </div>
         ) : (
           <Fragment>
+            <a onClick={this.scrollToBottm}>아래</a>
             <div className="movies">
               {movies.map((movie, index) => (
                 <Movie
@@ -76,6 +79,9 @@ class Home extends React.Component {
               ))}
             </div>
             <div className="more__box">
+              <h3 className="more__page">
+                현재 페이지 : {this.state.pageNumber - 1} 페이지
+              </h3>
               <button
                 className="more__btn"
                 type="button"

@@ -1,6 +1,4 @@
 .container {
-  display: flex;
-  justify-content: center;
   height: 100%;
 }
 
@@ -16,12 +14,13 @@
 .movies {
   display: grid;
   grid-template-columns: repeat(3, minmax(200px, 1fr));
-  grid-gap: 50px;
-  margin: 50px;
+  grid-gap: 60px;
+  margin: 60px;
 }
 
 .more__box {
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -32,7 +31,9 @@
   border-bottom: 1px solid darkgray;
   cursor: pointer;
   color: #2c2c2c;
+  width: 20%;
   font-size: 24px;
+  margin: auto;
   margin-bottom: 32px;
   padding: 8px;
 }
@@ -42,10 +43,34 @@
   border-radius: 5px;
 }
 
+.more__page {
+  text-align: center;
+  width: 100%;
+  font-size: 24px;
+  font-weight: normal;
+  margin: 8px auto;
+}
+
+@media screen and (max-width: 1000px) {
+  .movies {
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+  }
+}
+
 @media screen and (max-width: 768px) {
   .movies {
     grid-template-columns: 1fr;
     grid-gap: 50px;
     margin: 60px;
+    margin-top: 170px;
+  }
+
+  .more__btn {
+    width: 50%;
+    font-size: 16px;
+  }
+
+  .more__page {
+    font-size: 16px;
   }
 }

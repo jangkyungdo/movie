@@ -35,9 +35,8 @@
 
 @media screen and (max-width: 768px) {
   .nav {
-    bottom: 0;
     left: 0;
-    top: inherit;
+    top: 0;
     transform: none;
     opacity: 0.8;
   }
