@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import axios from "axios";
 import Movie from "../components/Movie";
 import "./Home.css";
@@ -60,7 +60,7 @@ class Home extends React.Component {
             <span className="loader__text">Loading...</span>
           </div>
         ) : (
-          <div>
+          <Fragment>
             <div className="movies">
               {movies.map((movie, index) => (
                 <Movie
@@ -84,7 +84,7 @@ class Home extends React.Component {
                 Load More
               </button>
             </div>
-          </div>
+          </Fragment>
         )}
       </section>
     );
