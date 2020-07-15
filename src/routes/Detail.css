@@ -8,7 +8,7 @@
     0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
   width: 40%;
   text-align: center;
-  margin: 50px;
+  margin: 170px auto;
   color: #2c2c2c;
 }
 
@@ -32,4 +32,10 @@
 
 .detail__genres li {
   margin-right: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .detail {
+    width: 80%;
+  }
 }
