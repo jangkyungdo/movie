@@ -18,6 +18,16 @@
   margin: 60px;
 }
 
+.bottom__btn {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  cursor: pointer;
+  border: 1px solid #0008fc;
+  border-radius: 50%;
+  padding: 8px;
+}
+
 .more__box {
   display: flex;
   flex-direction: column;
@@ -63,6 +73,12 @@
     grid-gap: 50px;
     margin: 60px;
     margin-top: 170px;
+  }
+
+  .bottom__btn {
+    bottom: 16px;
+    right: 16px;
+    padding: 4px;
   }
 
   .more__btn {

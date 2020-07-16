@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import axios from "axios";
 import Movie from "../components/Movie";
 import "./Home.css";
+import { MdArrowDownward } from "react-icons/md";
 
 class Home extends React.Component {
   state = {
@@ -50,48 +51,56 @@ class Home extends React.Component {
   componentDidMount() {
     this.getMovies();
   }
-  scrollToBottm(event) {
-    document.getElementById("root").scrollTo(100, 100);
-  }
+  scrollToBottm = () => {
+    window.scrollTo({ top: 5000, behavior: "smooth" });
+  };
   render() {
     const { isLoading, movies } = this.state;
     return (
-      <section className="container">
-        {isLoading ? (
-          <div className="loader">
-            <span className="loader__text">Loading...</span>
-          </div>
-        ) : (
-          <Fragment>
-            <a onClick={this.scrollToBottm}>아래</a>
-            <div className="movies">
-              {movies.map((movie, index) => (
-                <Movie
-                  key={index}
-                  id={movie.id}
-                  year={movie.year}
-                  title={movie.title}
-                  summary={movie.summary}
-                  poster={movie.medium_cover_image}
-                  rating={movie.rating}
-                  genres={movie.genres}
-                />
-              ))}
+      <section
+        className="container"
+        onScroll={this.scrollToBottm}
+        ref={(ref) => (this.bottom = ref)}
+      >
+        <div>
+          {isLoading ? (
+            <div className="loader">
+              <span className="loader__text">Loading...</span>
             </div>
-            <div className="more__box">
-              <h3 className="more__page">
-                현재 페이지 : {this.state.pageNumber - 1} 페이지
-              </h3>
-              <button
-                className="more__btn"
-                type="button"
-                onClick={this.moreMovies}
-              >
-                Load More
-              </button>
-            </div>
-          </Fragment>
-        )}
+          ) : (
+            <Fragment>
+              <a className="bottom__btn" onClick={this.scrollToBottm}>
+                <MdArrowDownward size="40" color="0008fc" />
+              </a>
+              <div className="movies">
+                {movies.map((movie, index) => (
+                  <Movie
+                    key={index}
+                    id={movie.id}
+                    year={movie.year}
+                    title={movie.title}
+                    summary={movie.summary}
+                    poster={movie.medium_cover_image}
+                    rating={movie.rating}
+                    genres={movie.genres}
+                  />
+                ))}
+              </div>
+              <div className="more__box">
+                <h3 className="more__page">
+                  현재 페이지 : {this.state.pageNumber - 1} 페이지
+                </h3>
+                <button
+                  className="more__btn"
+                  type="button"
+                  onClick={this.moreMovies}
+                >
+                  Load More
+                </button>
+              </div>
+            </Fragment>
+          )}
+        </div>
       </section>
     );
   }
