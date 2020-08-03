@@ -12,31 +12,37 @@ class Home extends React.Component {
   };
 
   // 영화 데이터 로딩
-  getMovies = async () => {
-    const {
-      data: {
-        data: { page_number, movies },
-      },
-    } = await axios.get(
-      `https://yts-proxy.now.sh/list_movies.json?sort_by=like_count&page=1
-      `
-    );
+  // getMovies = async () => {
+  //   const {
+  //     data: {
+  //       data: { page_number, movies },
+  //     },
+  //   } = await axios.get(
+  //     `https://yts-proxy.now.sh/list_movies.json?sort_by=like_count&page=1
+  //     `
+  //   );
 
-    this.loadMoreMovies(page_number, movies);
-    // 상태 변화가 생기는 순간 render() 호출
-    console.log(movies, `페이지 넘버: ${page_number}`);
-  };
+  //   this.loadMoreMovies(page_number, movies);
+  //   // 상태 변화가 생기는 순간 render() 호출
+  //   console.log(movies, `페이지 넘버: ${page_number}`);
+  // };
 
   moreMovies = async () => {
-    const {
-      data: {
-        data: { page_number, movies },
-      },
-    } = await axios.get(
-      `https://yts-proxy.now.sh/list_movies.json?sort_by=like_count&page=${this.state.pageNumber}`
-    );
-    this.loadMoreMovies(page_number, movies);
-    console.log(movies, `페이지 넘버: ${page_number}`);
+    await fetch(`https://yts-proxy.now.sh/list_movies.json?sort_by=like_count&page=${this.state.pageNumber}
+    `)
+      .then((res) => res.json())
+      .then((json) =>
+        this.loadMoreMovies(json.data.page_number, json.data.movies)
+      );
+    // const {
+    //   data: {
+    //     data: { page_number, movies },
+    //   },
+    // } = await axios.get(
+    //   `https://yts-proxy.now.sh/list_movies.json?sort_by=like_count&page=${this.state.pageNumber}`
+    // );
+    // this.loadMoreMovies(page_number, movies);
+    // console.log(movies, `페이지 넘버: ${page_number}`);
   };
 
   loadMoreMovies = (page_number, movies) => {
@@ -49,11 +55,19 @@ class Home extends React.Component {
   };
 
   componentDidMount() {
-    this.getMovies();
+    // this.getMovies();
+    fetch(`https://yts-proxy.now.sh/list_movies.json?sort_by=like_count&page=1
+    `)
+      .then((res) => res.json())
+      .then((json) =>
+        this.loadMoreMovies(json.data.page_number, json.data.movies)
+      );
   }
+
   scrollToBottm = () => {
-    window.scrollTo({ top: 5000, behavior: "smooth" });
+    window.scrollTo({ top: 10000, behavior: "smooth" });
   };
+
   render() {
     const { isLoading, movies } = this.state;
     return (
